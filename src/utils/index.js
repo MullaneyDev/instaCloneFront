@@ -78,3 +78,45 @@ export const registerUser = async (username, email, password) => {
     console.log(error);
   }
 };
+
+export const updateUsername = async (username, newUsername) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5001/user/login/updateUsername`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          newUsername: newUsername,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUser = async (username) => {
+  try {
+    const response = await fetch("http://localhost:5001/user/login/delete", {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
