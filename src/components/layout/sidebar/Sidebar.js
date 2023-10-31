@@ -46,24 +46,25 @@ const Sidebar = (user, setUser, setLoggedIn) => {
               type="text"
               required={true}
               placeholder="Current Username"
+              className="input-field"
               onChange={(e) => handleChange(e, setUsername)}
             />
             <input
               type="text"
               required={true}
               placeholder="New Username"
+              className="input-field"
               onChange={(e) => handleChange(e, setNewUsername)}
             />
-            <input type="submit" value="Submit" />
+            <input className="sidebarBtn" type="submit" value="Submit" />
           </form>
           <h3>{message}</h3>
-          <button
-            className="deleteBtn"
-            onClick={() => handleDelete(user.username)}
-          >
+          <button className="sidebarBtn" onClick={() => handleDelete(user.username)}>
             Delete Account
           </button>
-          <button onClick={() => handleLogout()}>Log Out</button>
+          <button className="sidebarBtn" onClick={() => handleLogout()}>
+            Log Out
+          </button>
         </div>
       </div>
       <div className="pictureWindow">
