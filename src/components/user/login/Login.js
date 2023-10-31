@@ -17,7 +17,7 @@ const Login = ({ setUser, setLoggedIn, loggedIn }) => {
     if (!loggedIn) {
       const response = await loginUser(username, password);
       await setMessage(response.message);
-      if (response.message === "Successful login") {
+      if (response.message === "Success!") {
         await setUser(response.user);
         await setLoggedIn(true);
       }

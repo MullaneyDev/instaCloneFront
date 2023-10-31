@@ -9,7 +9,7 @@ import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/Footer";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
 

@@ -50,7 +50,6 @@ export const loginUser = async (username, password) => {
     });
     const data = await response.json();
     writeCookie("jwt_token", data.user.token, 7);
-    console.log("logged in");
     return data;
   } catch (error) {
     console.log(error);

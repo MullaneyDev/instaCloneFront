@@ -6,7 +6,7 @@ import { deleteUser, updateUsername } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 
-const Sidebar = ({user, setUser, setLoggedIn,loggedIn, users,setUsers}) => {
+const Sidebar = ({users, setUsers, user,setUser,loggedIn,setLoggedIn}) => {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -37,7 +37,7 @@ const Sidebar = ({user, setUser, setLoggedIn,loggedIn, users,setUsers}) => {
           <KeyboardDoubleArrowLeftIcon />
         </button>
         <div className="account">
-          <h3>username</h3>
+          <h3>{user.username}</h3>
           <h3>photos</h3>
         </div>
         <div className="accountOptions">
