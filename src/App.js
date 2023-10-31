@@ -9,7 +9,7 @@ import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/Footer";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
 
@@ -34,9 +34,27 @@ function App() {
 
   if (!loggedIn) {
     return (
+      <>
+        <div className="App">
+          <Header user={user} loggedIn={loggedIn} />
+          <NotLoggedIn
+            user={user}
+            setUser={setUser}
+            users={users}
+            setUsers={setUsers}
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+          />
+          <Footer />
+        </div>{" "}
+      </>
+    );
+  }
+  return (
+    <>
       <div className="App">
         <Header user={user} loggedIn={loggedIn} />
-        <NotLoggedIn
+        <LoggedIn
           user={user}
           setUser={setUser}
           users={users}
@@ -46,21 +64,7 @@ function App() {
         />
         <Footer />
       </div>
-    );
-  }
-  return (
-    <div className="App">
-      <Header />
-      <LoggedIn
-        user={user}
-        setUser={setUser}
-        users={users}
-        setUsers={setUsers}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      />
-      <Footer />
-    </div>
+    </>
   );
 }
 
