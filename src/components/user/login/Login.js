@@ -32,6 +32,7 @@ const Login = ({ setUser, setLoggedIn, loggedIn }) => {
           type="text"
           id="usernameLogin"
           placeholder="Username"
+          className="input-field"
           required={true}
           onChange={(e) => handleChange(e, setUsername)}
         />
@@ -39,10 +40,11 @@ const Login = ({ setUser, setLoggedIn, loggedIn }) => {
           type="password"
           id="passwordLogin"
           placeholder="Password"
+          className="input-field"
           required={true}
           onChange={(e) => handleChange(e, setPassword)}
         />
-        <input type="submit" value="Log in" />
+        <input type="submit" className="Btn" value="Sign in" />
       </form>
       <h2>{message}</h2>
     </div>

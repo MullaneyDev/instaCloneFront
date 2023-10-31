@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
 body {
   margin: 0;
   display:grid;
   background-color: #f5d7db;
   align-items: center;
+  font-family: "Agbalumo";
 }
