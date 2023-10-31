@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 70px;
+    align-content: center;
+    background-color: #BD83B8;
+    color: #1b3358;
+      background-image: linear-gradient(#BD83B8,#f5d7db);
+}

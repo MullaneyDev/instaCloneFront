@@ -1,0 +1,16 @@
+.userContainer {
+    display: grid;
+    width: 620px;
+    justify-self: center;
+    align-self: center;
+    grid-gap: 20px;
+    margin: 50px;
+}
+.register {
+    grid-row: 1;
+    grid-column: 1;
+}
+.login {
+    grid-row: 1;
+    grid-column: 2;
+}

@@ -1,0 +1,15 @@
+.login {
+  display: grid;
+  background-color: gray;
+  border: solid #464545;
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  align-content: center;
+}
+.loginForm {
+    display: grid;
+    grid-template-columns: 200px;
+    grid-gap: 10px;
+    justify-content: center;
+}
