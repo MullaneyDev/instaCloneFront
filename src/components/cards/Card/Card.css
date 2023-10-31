@@ -1,9 +1,10 @@
 .card {
-  width: 20%;
-  height: 45%;
+  width: 80px;
   border: 1px solid #bd83b8;
   background-color: #f5d7db;
-  display: flex;
+  display: grid;
   flex-direction: column;
-  border-radius: 50px;
+  border-radius: 5px;
+  align-content: center;
+  margin: 10px;
 }

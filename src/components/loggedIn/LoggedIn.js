@@ -22,15 +22,6 @@ const LoggedIn = ({
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
       />
-
-      {/* <CardContainer
-        users={users}
-        setUsers={setUsers}
-        user={user}
-        setUser={setUser}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      /> */}
     </div>
   );
 };

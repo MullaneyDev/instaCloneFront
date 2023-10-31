@@ -4,8 +4,9 @@ import React from "react";
 import { useState } from "react";
 import { deleteUser, updateUsername } from "../../../utils";
 import { writeCookie } from "../../../common";
+import CardContainer from "../../cards/CardContainer/CardContainer";
 
-const Sidebar = (user, setUser, setLoggedIn) => {
+const Sidebar = ({user, setUser, setLoggedIn,loggedIn, users,setUsers}) => {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -59,7 +60,10 @@ const Sidebar = (user, setUser, setLoggedIn) => {
             <input className="sidebarBtn" type="submit" value="Submit" />
           </form>
           <h3>{message}</h3>
-          <button className="sidebarBtn" onClick={() => handleDelete(user.username)}>
+          <button
+            className="sidebarBtn"
+            onClick={() => handleDelete(user.username)}
+          >
             Delete Account
           </button>
           <button className="sidebarBtn" onClick={() => handleLogout()}>
@@ -69,6 +73,16 @@ const Sidebar = (user, setUser, setLoggedIn) => {
       </div>
       <div className="pictureWindow">
         <h3>PICTURES HERE</h3>
+      </div>
+      <div className="users">
+        <CardContainer
+          users={users}
+          setUsers={setUsers}
+          user={user}
+          setUser={setUser}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
       </div>
     </div>
   );

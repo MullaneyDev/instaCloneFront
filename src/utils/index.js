@@ -20,7 +20,7 @@ export const authCheck = async (jwt) => {
 export const findAllUsers = async () => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`http://localhost:5001/user/admin`, {
+    const response = await fetch(`http://localhost:5001/user/`, {
       method: "GET",
       mode: "cors",
       headers: {
