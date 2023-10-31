@@ -6,7 +6,7 @@ const Header = ({ user, loggedIn }) => {
     return (
       <div className="header">
         <h1>Promptelex</h1>
-        <h3>Please log in</h3>
+        <h3>log in or register</h3>
       </div>
     );
   } else {

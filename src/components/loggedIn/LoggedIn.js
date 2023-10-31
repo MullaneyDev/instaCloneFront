@@ -37,7 +37,7 @@ const LoggedIn = ({
     await setLoggedIn(false);
   };
   return (
-    <div className="App">
+    <div>
       <UserContainer
         users={users}
         setUsers={setUsers}

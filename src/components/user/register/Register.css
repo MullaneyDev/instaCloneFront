@@ -1,7 +1,7 @@
 .register {
   display: grid;
-  background-color: gray;
-  border: solid #464545;
+  background-color: #f1916d;
+  border: solid #bd83b8;
   border-radius: 5px;
   width: 300px;
   height: 300px;
