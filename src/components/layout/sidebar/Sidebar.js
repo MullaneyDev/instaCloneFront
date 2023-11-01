@@ -4,7 +4,7 @@ import React from "react";
 import { useCollapse } from "react-collapsed";
 import { useState } from "react";
 import { deleteUser } from "../../../utils";
-import { updateUsername } from "../../../utils";
+import { updateUsername , updatePassword} from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
@@ -15,15 +15,19 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
-  const [modal, setModal] = useState(false);
+  const [password,setPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [modalDelete, setModalDelete] = useState(false);
+  const [modalUpdateUsername, setModalUpdateUsername] = useState(false);
+  const [modalUpdatePassword, setModalUpdatePassword] = useState(false);
 
   const handleChange = (e, setter) => {
     setter(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e,setter,current,updated) => {
     e.preventDefault();
-    const response = await updateUsername(username, newUsername);
+    const response = await setter(current, updated);
     await setMessage(response.message);
   };
 
@@ -39,65 +43,140 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
     await setLoggedIn(false);
   };
 
-  const openModal = async () => {
-    setModal(true);
+  const openModal = async (setter) => {
+    await setter(true);
   };
-  const closeModal = () => {
-    setModal(false);
+  const closeModal = async (setter) => {
+    await setter(false);
   };
 
   function Collapsible() {
-    const [isExpanded, setExpanded] = useState(false)
-    const { getCollapseProps, getToggleProps} = useCollapse();
+    const [isExpanded, setExpanded] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse();
     return (
       <div className="collapsible">
-        <div className="header" {...getToggleProps({ onClick: () => setExpanded((prevExpanded) => !prevExpanded),})}>
+        <div
+          className="header"
+          {...getToggleProps({
+            onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+          })}
+        >
           {isExpanded ? "Account Options" : "Account Options"}
         </div>
         <div {...getCollapseProps()}>
           <div className="content">
-            <div className="accountOptions">
-              <form className="updateForm" onSubmit={handleSubmit}>
-                <label>Update Username</label>
-                <input
-                  type="text"
-                  required={true}
-                  placeholder="Current Username"
-                  className="input-field"
-                  onChange={(e) => handleChange(e, setUsername)}
-                />
-                <input
-                  type="text"
-                  required={true}
-                  placeholder="New Username"
-                  className="input-field"
-                  onChange={(e) => handleChange(e, setNewUsername)}
-                />
-                <input className="sidebarBtn" type="submit" value="Submit" />
-              </form>
-              <h3>{message}</h3>
-              <button className="sidebarBtn" onClick={openModal}>
-                Delete Account
-              </button>
-              <Modal
-                className="ModalStyle"
-                isOpen={modal}
-                onRequestClose={closeModal}
-              >
-                <>
-                  <h3> Are you sure you want to delete your account?</h3>
-                  <button
-                    className="sidebarBtn"
-                    onClick={() => handleDelete(user.username)}
+            <button
+              className="sidebarBtn"
+              onClick={() => openModal(setModalUpdateUsername)}
+            >
+              Update Username
+            </button>
+            <Modal
+              className="ModalStyle"
+              isOpen={modalUpdateUsername}
+              onRequestClose={() => closeModal(setModalUpdateUsername)}
+            >
+              <>
+                <div className="accountOptions">
+                  <form
+                    className="updateForm"
+                    onSubmit={(e) =>
+                      handleSubmit(e, updateUsername, username, newUsername)
+                    }
                   >
-                    Confirm Delete
-                  </button>
-                </>
-              </Modal>
-              <button className="sidebarBtn" onClick={() => handleLogout()}>
-                Log Out
-              </button>
-            </div>
+                    <label>Update Username</label>
+                    <input
+                      type="text"
+                      required={true}
+                      placeholder="Current Username"
+                      className="input-field"
+                      onChange={(e) => handleChange(e, setUsername)}
+                    />
+                    <input
+                      type="text"
+                      required={true}
+                      placeholder="New Username"
+                      className="input-field"
+                      onChange={(e) => handleChange(e, setNewUsername)}
+                    />
+                    <input
+                      className="sidebarBtn"
+                      type="submit"
+                      value="Submit"
+                    />
+                  </form>
+                  <h3>{message}</h3>
+                </div>
+              </>
+            </Modal>
+            <button
+              className="sidebarBtn"
+              onClick={() => openModal(setModalUpdatePassword)}
+            >
+              Update Password
+            </button>
+            <Modal
+              className="ModalStyle"
+              isOpen={modalUpdatePassword}
+              onRequestClose={() => closeModal(setModalUpdatePassword)}
+            >
+              <>
+                <div className="accountOptions">
+                  <form
+                    className="updateForm"
+                    onSubmit={(e) =>
+                      handleSubmit(e, updatePassword, password, newPassword)
+                    }
+                  >
+                    <label>Update Password</label>
+                    <input
+                      type="password"
+                      required={true}
+                      placeholder="Current Password"
+                      className="input-field"
+                      onChange={(e) => handleChange(e, setPassword)}
+                    />
+                    <input
+                      type="password"
+                      required={true}
+                      placeholder="New Password"
+                      className="input-field"
+                      onChange={(e) => handleChange(e, setNewPassword)}
+                    />
+                    <input
+                      className="sidebarBtn"
+                      type="submit"
+                      value="Submit"
+                    />
+                  </form>
+                  <h3>{message}</h3>
+                </div>
+              </>
+            </Modal>
+            <button
+              className="sidebarBtn"
+              onClick={() => openModal(setModalDelete)}
+            >
+              Delete Account
+            </button>
+            <Modal
+              className="ModalStyle"
+              isOpen={modalDelete}
+              onRequestClose={() => closeModal(setModalDelete)}
+            >
+              <>
+                <h3> Are you sure you want to delete your account?</h3>
+                <button
+                  className="sidebarBtn"
+                  onClick={() => handleDelete(user.username)}
+                >
+                  Confirm Delete
+                </button>
+              </>
+            </Modal>
+            <button className="sidebarBtn" onClick={() => handleLogout()}>
+              Log Out
+            </button>
           </div>
         </div>
       </div>

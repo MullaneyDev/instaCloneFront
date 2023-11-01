@@ -101,6 +101,29 @@ export const updateUsername = async (username, newUsername) => {
   }
 };
 
+export const updatePassword = async (password, newPassword) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5001/user/login/updatePassword`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+          newPassword: newPassword,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteUser = async (username) => {
   try {
     const response = await fetch("http://localhost:5001/user/login/delete", {

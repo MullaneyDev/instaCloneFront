@@ -16,6 +16,7 @@ const Login = ({ setUser, setLoggedIn, loggedIn }) => {
     e.preventDefault();
     if (!loggedIn) {
       const response = await loginUser(username, password);
+      console.log(response)
       await setMessage(response.message);
       if (response.message === "Success!") {
         await setUser(response.user);
