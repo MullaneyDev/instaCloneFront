@@ -27,7 +27,7 @@
   display: grid;
   height: 85%;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 350px 60vw 20vw;
   padding-top: 0px;
   padding-bottom: 70px;
  overflow: hidden;
