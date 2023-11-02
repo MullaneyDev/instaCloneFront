@@ -18,9 +18,9 @@ const UpdateStatus = () => {
   return (
     <div>
       <form onSubmit={handleAddPhotoSubmit}>
-        <label>Image URL</label>
-        <input type="text" name="imageurl" onChange={handleUrl} />
-        <input type="submit" value="Add Photo" />
+        <label>Add a photo</label>
+        <input type="text" name="imageurl" className="input-field" placeholder="Image URL"onChange={handleUrl} />
+        <input type="submit" className="sidebarBtn" value="Add" />
       </form>
     </div>
   );
