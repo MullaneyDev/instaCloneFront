@@ -77,6 +77,7 @@ function App() {
           setUsers={setUsers}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
+          apiPhotos={apiPhotos}
         />
         <Footer />
       </div>
