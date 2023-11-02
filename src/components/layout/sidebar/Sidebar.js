@@ -8,7 +8,7 @@ import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
-import { MainDisplay } from "../mainDisplay/MainDisplay";
+import MainDisplay from "../mainDisplay/MainDisplay";
 
 Modal.setAppElement("#root");
 
