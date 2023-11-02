@@ -11,7 +11,6 @@ import Modal from "react-modal";
 import MainDisplay from "../mainDisplay/MainDisplay";
 import UpdateStatus from "../../updateStatus/UpdateStatus";
 
-
 Modal.setAppElement("#root");
 
 const Sidebar = ({
@@ -213,7 +212,7 @@ const Sidebar = ({
       <div className="pictureWindow">
 
         <h3>PICTURES HERE</h3>
-        <MainDisplay />
+        <MainDisplay apiPhotos={apiPhotos} />
       </div>
 
       <div className="users">
