@@ -1,0 +1,10 @@
+.updateStatus {
+  height: 110px;
+  width: 180px;
+  justify-self: center;
+  background-color: #f1916d;
+  border: solid #bd83b8;
+  border-radius: 5px;
+  font-family: inherit;
+  margin: 3px;
+}

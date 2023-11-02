@@ -203,14 +203,15 @@ const Sidebar = ({
         <div className="account">
           <h3>{user.username}</h3>
           <h3>Your Photos</h3>
+        </div>       
+         <div className="updateStatus">
+          <UpdateStatus />
         </div>
         <Collapsible />
       </div>
 
       <div className="pictureWindow">
-        <div className="updateStatus">
-          <UpdateStatus />
-        </div>
+
         <h3>PICTURES HERE</h3>
         <MainDisplay />
       </div>

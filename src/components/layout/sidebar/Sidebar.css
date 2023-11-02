@@ -19,7 +19,7 @@
     #f1916d
   ); */
   display: grid;
-  grid-template-rows: 20px 1fr 1fr 70px;
+  grid-template-rows: 20px 300px 300px 70px;
   overflow-x: hidden;
   transition: 0.5s;
   z-index: 1;
