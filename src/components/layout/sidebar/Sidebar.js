@@ -9,10 +9,20 @@ import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
 import MainDisplay from "../mainDisplay/MainDisplay";
+import UpdateStatus from "../../updateStatus/UpdateStatus";
+
 
 Modal.setAppElement("#root");
 
-const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
+const Sidebar = ({
+  users,
+  setUsers,
+  user,
+  setUser,
+  loggedIn,
+  setLoggedIn,
+  apiPhotos,
+}) => {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -196,10 +206,15 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
         </div>
         <Collapsible />
       </div>
+
       <div className="pictureWindow">
+        <div className="updateStatus">
+          <UpdateStatus />
+        </div>
         <h3>PICTURES HERE</h3>
         <MainDisplay />
       </div>
+
       <div className="users">
         <CardContainer
           users={users}
