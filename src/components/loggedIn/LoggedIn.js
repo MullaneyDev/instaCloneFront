@@ -21,6 +21,7 @@ const LoggedIn = ({
         setUser={setUser}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
+        apiPhotos={apiPhotos}
       />
     </div>
   );
