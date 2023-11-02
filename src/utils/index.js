@@ -11,6 +11,7 @@ export const authCheck = async (jwt) => {
       },
     });
     const data = await response.json();
+    console.log(response, data);
     return data;
   } catch (error) {
     console.log(error);

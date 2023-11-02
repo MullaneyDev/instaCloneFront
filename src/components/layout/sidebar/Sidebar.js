@@ -22,6 +22,7 @@ const Sidebar = ({
   setLoggedIn,
   apiPhotos,
 }) => {
+  console.log("SIDEBAR", user);
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -202,8 +203,8 @@ const Sidebar = ({
         <div className="account">
           <h3>{user.username}</h3>
           <h3>Your Photos</h3>
-        </div>       
-         <div className="updateStatus">
+        </div>
+        <div className="updateStatus">
           <UpdateStatus />
         </div>
         <Collapsible />
