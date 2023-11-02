@@ -1,4 +1,5 @@
 import React from "react";
+import "./MainDisplayCard.css";
 
 const MainDisplayCard = ({ apiPhoto }) => {
   console.log("HELLO FROM MAIN DISPLAY CARD", apiPhoto);
@@ -12,7 +13,6 @@ const MainDisplayCard = ({ apiPhoto }) => {
       />
     </div>
   );
-  console.log();
 };
 
 export default MainDisplayCard;
