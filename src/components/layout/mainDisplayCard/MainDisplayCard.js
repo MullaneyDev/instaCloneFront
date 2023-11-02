@@ -5,7 +5,11 @@ const MainDisplayCard = ({ apiPhoto }) => {
   if (!apiPhoto) <h1>NO PHOTO</h1>;
   return (
     <div className="main-display-card">
-      <img className="photo" src={apiPhoto.url} />
+      <img
+        className="photo"
+        src={apiPhoto.download_url}
+        alt={apiPhoto.author}
+      />
     </div>
   );
   console.log();
