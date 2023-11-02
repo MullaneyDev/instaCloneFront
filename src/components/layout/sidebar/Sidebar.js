@@ -210,8 +210,6 @@ const Sidebar = ({
       </div>
 
       <div className="pictureWindow">
-
-        <h3>PICTURES HERE</h3>
         <MainDisplay apiPhotos={apiPhotos} />
       </div>
 
