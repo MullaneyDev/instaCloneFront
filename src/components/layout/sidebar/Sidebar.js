@@ -4,10 +4,11 @@ import React from "react";
 import { useCollapse } from "react-collapsed";
 import { useState } from "react";
 import { deleteUser } from "../../../utils";
-import { updateUsername , updatePassword} from "../../../utils";
+import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
+import UpdateStatus from "../../updateStatus/UpdateStatus";
 
 Modal.setAppElement("#root");
 
@@ -15,8 +16,8 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
-  const [password,setPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
+  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
   const [modalUpdateUsername, setModalUpdateUsername] = useState(false);
   const [modalUpdatePassword, setModalUpdatePassword] = useState(false);
@@ -25,7 +26,7 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
     setter(e.target.value);
   };
 
-  const handleSubmit = async (e,setter,current,updated) => {
+  const handleSubmit = async (e, setter, current, updated) => {
     e.preventDefault();
     const response = await setter(current, updated);
     await setMessage(response.message);
@@ -195,9 +196,14 @@ const Sidebar = ({ users, setUsers, user, setUser, loggedIn, setLoggedIn }) => {
         </div>
         <Collapsible />
       </div>
+
       <div className="pictureWindow">
+        <div className="updateStatus">
+          <UpdateStatus />
+        </div>
         <h3>PICTURES HERE</h3>
       </div>
+
       <div className="users">
         <CardContainer
           users={users}
