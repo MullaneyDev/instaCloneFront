@@ -12,6 +12,22 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
+  const [apiPhotos, setApiPhotos] = useState([]);
+
+  useEffect(() => {
+    async function getPhotos() {
+      const response = await fetch(`https://picsum.photos/v2/list`);
+      const data = await response.json();
+      console.log(data);
+      setApiPhotos(data);
+    }
+    getPhotos();
+    // if (apiPhotos === false) {
+    //   setApiPhotos(false);
+    // } else {
+    //   console.log("apiPhotos");
+    // }
+  }, []);
 
   useEffect(() => {
     if (document.cookie) {
