@@ -49,8 +49,17 @@ export const loginUser = async (username, password) => {
       }),
     });
     const data = await response.json();
-    writeCookie("jwt_token", data.user.token, 7);
+    if (data.message !== "Invalid username." && data.message !== "Unauthorised Login!") {    
+      writeCookie("jwt_token", data.user.token, 7);
     return data;
+    }
+    if (data.message === "Invalid username.") {
+      return {message: "Invalid username",data}
+    }
+    if (data.message === "Unauthorised Login!") {
+      return { message: "Invalid password", data };
+    }
+    
   } catch (error) {
     console.log(error);
   }
