@@ -20,7 +20,7 @@ export const authCheck = async (jwt) => {
 export const findAllUsers = async () => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`http://localhost:5001/user/admin`, {
+    const response = await fetch(`http://localhost:5001/user/`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -50,7 +50,6 @@ export const loginUser = async (username, password) => {
     });
     const data = await response.json();
     writeCookie("jwt_token", data.user.token, 7);
-    console.log("logged in");
     return data;
   } catch (error) {
     console.log(error);
@@ -92,6 +91,29 @@ export const updateUsername = async (username, newUsername) => {
         body: JSON.stringify({
           username: username,
           newUsername: newUsername,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updatePassword = async (password, newPassword) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5001/user/login/updatePassword`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: password,
+          newPassword: newPassword,
         }),
       }
     );

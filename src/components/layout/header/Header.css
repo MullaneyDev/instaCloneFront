@@ -1,0 +1,14 @@
+.headerTop {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  top: 0;
+  width: 100vw;
+  position: fixed;
+  justify-content: space-around;
+  height: 70px;
+  align-content: center;
+  color: #1b3358;
+  background-image: linear-gradient(#bd83b8, #f5d7db);
+
+}

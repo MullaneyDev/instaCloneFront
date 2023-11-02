@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react";
 import UserContainer from "../user/userContainer/UserContainer";
+import "../../App.css";
 
 const NotLoggedIn = ({
   users,
@@ -10,17 +11,15 @@ const NotLoggedIn = ({
   setLoggedIn,
 }) => {
   return (
-    <div className="App">
-      <UserContainer
-        users={users}
-        setUsers={setUsers}
-        user={user}
-        setUser={setUser}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      />
-    </div>
+    <UserContainer
+      users={users}
+      setUsers={setUsers}
+      user={user}
+      setUser={setUser}
+      loggedIn={loggedIn}
+      setLoggedIn={setLoggedIn}
+    />
   );
 };
 
-export default NotLoggedIn
+export default NotLoggedIn;

@@ -1,0 +1,32 @@
+.login {
+  display: grid;
+  background-color: #f1916d;
+  border: solid #bd83b8;
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  align-content: center;
+}
+.loginForm {
+  display: grid;
+  grid-template-columns: 200px;
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+.Btn {
+  height: 50px;
+  width: 120px;
+  justify-self: center;
+  background-color: #f5d7db;
+  border: solid #bd83b8;
+  border-radius: 5px;
+  font-family: inherit;
+}
+.input-field {
+  font-family: inherit;
+  border-radius: 5px;
+  border:solid 2px #bd83b8;
+  text-align: center;
+  background-color: #f5d7db;
+}

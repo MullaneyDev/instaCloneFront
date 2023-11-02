@@ -34,9 +34,27 @@ function App() {
 
   if (!loggedIn) {
     return (
+      <>
+        <div className="App">
+          <Header user={user} loggedIn={loggedIn} />
+          <NotLoggedIn
+            user={user}
+            setUser={setUser}
+            users={users}
+            setUsers={setUsers}
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+          />
+          <Footer />
+        </div>{" "}
+      </>
+    );
+  }
+  return (
+    <>
       <div className="App">
         <Header user={user} loggedIn={loggedIn} />
-        <NotLoggedIn
+        <LoggedIn
           user={user}
           setUser={setUser}
           users={users}
@@ -46,21 +64,7 @@ function App() {
         />
         <Footer />
       </div>
-    );
-  }
-  return (
-    <div className="App">
-      <Header />
-      <LoggedIn
-        user={user}
-        setUser={setUser}
-        users={users}
-        setUsers={setUsers}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      />
-      <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Register.css";
 import { useState } from "react";
 import { registerUser } from "../../../utils";
 
@@ -24,6 +25,7 @@ const Register = () => {
         <input
           type="text"
           id="usernameRegister"
+          className="input-field"
           placeholder="Username"
           required={true}
           onChange={(e) => handleChange(e, setUsername)}
@@ -32,6 +34,7 @@ const Register = () => {
           type="email"
           id="email"
           placeholder="Email"
+          className="input-field"
           required={true}
           onChange={(e) => handleChange(e, setEmail)}
         />
@@ -39,13 +42,15 @@ const Register = () => {
           type="password"
           id="passwordRegister"
           placeholder="Password"
+          className="input-field"
           required={true}
           onChange={(e) => handleChange(e, setPassword)}
         />
-        <input type="submit" value="Register" />
+        <input type="submit" className="Btn" value="Sign up" />
       </form>
       <h2>{message}</h2>
-    </div>)
+    </div>
+  );
 }
 
 export default Register
