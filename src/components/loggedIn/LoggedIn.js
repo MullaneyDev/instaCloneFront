@@ -11,7 +11,7 @@ const LoggedIn = ({
   loggedIn,
   setLoggedIn,
 }) => {
-
+  console.log("FROM LOGGED IN", user);
   return (
     <div>
       <Sidebar

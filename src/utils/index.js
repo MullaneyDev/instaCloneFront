@@ -10,7 +10,9 @@ export const authCheck = async (jwt) => {
         Authorization: `Bearer ${jwt}`,
       },
     });
+    console.log("FROM AUTHCHECK", response);
     const data = await response.json();
+    console.log("FROM AUTH CHECK DATA", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -49,17 +51,19 @@ export const loginUser = async (username, password) => {
       }),
     });
     const data = await response.json();
-    if (data.message !== "Invalid username." && data.message !== "Unauthorised Login!") {    
+    if (
+      data.message !== "Invalid username." &&
+      data.message !== "Unauthorised Login!"
+    ) {
       writeCookie("jwt_token", data.user.token, 7);
-    return data;
+      return data;
     }
     if (data.message === "Invalid username.") {
-      return {message: "Invalid username",data}
+      return { message: "Invalid username", data };
     }
     if (data.message === "Unauthorised Login!") {
       return { message: "Invalid password", data };
     }
-    
   } catch (error) {
     console.log(error);
   }
@@ -144,6 +148,24 @@ export const deleteUser = async (username) => {
       body: JSON.stringify({
         username: username,
       }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersPhotos = async (username) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`http://localhost:5001/user/${username}`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const data = await response.json();
     return data;

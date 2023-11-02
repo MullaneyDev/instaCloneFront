@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
+    console.log("HELLO FROM COOKIE USE EFFECT");
     if (document.cookie) {
       let token = getTokenFromCookie("jwt_token");
 
@@ -28,7 +29,9 @@ function App() {
 
   const loginWithToken = async (token, setUser) => {
     const persistentUser = await authCheck(token);
-    await setUser(persistentUser);
+    console.log("HELLO FROM PERSISTANT USER", persistentUser);
+    await setUser(persistentUser.user);
+
     await setLoggedIn(true);
   };
 
