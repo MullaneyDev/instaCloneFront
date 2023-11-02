@@ -8,6 +8,7 @@ import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
+import UpdateStatus from "../../updateStatus/UpdateStatus";
 
 Modal.setAppElement("#root");
 
@@ -203,9 +204,14 @@ const Sidebar = ({
         </div>
         <Collapsible />
       </div>
+
       <div className="pictureWindow">
+        <div className="updateStatus">
+          <UpdateStatus />
+        </div>
         <h3>PICTURES HERE</h3>
       </div>
+
       <div className="users">
         <CardContainer
           users={users}
