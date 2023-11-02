@@ -8,7 +8,9 @@ import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
 import Modal from "react-modal";
+import MainDisplay from "../mainDisplay/MainDisplay";
 import UpdateStatus from "../../updateStatus/UpdateStatus";
+
 
 Modal.setAppElement("#root");
 
@@ -210,6 +212,7 @@ const Sidebar = ({
           <UpdateStatus />
         </div>
         <h3>PICTURES HERE</h3>
+        <MainDisplay />
       </div>
 
       <div className="users">
