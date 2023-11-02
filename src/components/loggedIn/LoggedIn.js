@@ -10,8 +10,8 @@ const LoggedIn = ({
   setUser,
   loggedIn,
   setLoggedIn,
+  apiPhotos,
 }) => {
-
   return (
     <div>
       <Sidebar
