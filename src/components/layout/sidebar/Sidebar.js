@@ -11,7 +11,6 @@ import Modal from "react-modal";
 import MainDisplay from "../mainDisplay/MainDisplay";
 import UpdateStatus from "../../updateStatus/UpdateStatus";
 
-
 Modal.setAppElement("#root");
 
 const Sidebar = ({
@@ -23,6 +22,7 @@ const Sidebar = ({
   setLoggedIn,
   apiPhotos,
 }) => {
+  console.log("SIDEBAR", user);
   const [username, setUsername] = useState("");
   const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
@@ -203,15 +203,14 @@ const Sidebar = ({
         <div className="account">
           <h3>{user.username}</h3>
           <h3>Your Photos</h3>
-        </div>       
-         <div className="updateStatus">
+        </div>
+        <div className="updateStatus">
           <UpdateStatus />
         </div>
         <Collapsible />
       </div>
 
       <div className="pictureWindow">
-
         <h3>PICTURES HERE</h3>
         <MainDisplay />
       </div>
