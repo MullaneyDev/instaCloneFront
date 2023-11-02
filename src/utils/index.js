@@ -10,6 +10,7 @@ export const authCheck = async (jwt) => {
         Authorization: `Bearer ${jwt}`,
       },
     });
+    console.log("FROM AUTHCHECK", response);
     const data = await response.json();
     console.log(response, data);
     return data;
@@ -160,7 +161,7 @@ export const updateStatus = async (url) => {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(`http://localhost:5001/photo`, {
       method: "POST",
-      mode: "cors",
+
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -168,6 +169,24 @@ export const updateStatus = async (url) => {
       body: JSON.stringify({
         url: url,
       }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersPhotos = async (username) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`http://localhost:5001/user/${username}`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
     const data = await response.json();
     return data;

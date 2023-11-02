@@ -30,6 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log("HELLO FROM COOKIE USE EFFECT");
     if (document.cookie) {
       let token = getTokenFromCookie("jwt_token");
 

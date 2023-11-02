@@ -7,6 +7,7 @@ import { deleteUser } from "../../../utils";
 import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
+import AccountPhotos from "./accountPhotos/AccountPhotos";
 import Modal from "react-modal";
 import MainDisplay from "../mainDisplay/MainDisplay";
 import UpdateStatus from "../../updateStatus/UpdateStatus";
@@ -200,13 +201,14 @@ const Sidebar = ({
         <button className="menuBtn">
           <KeyboardDoubleArrowLeftIcon />
         </button>
-        <div className="account">
-          <h3>{user.username}</h3>
-          <h3>Your Photos</h3>
-        </div>
-        <div className="updateStatus">
-          <UpdateStatus />
-        </div>
+        <AccountPhotos
+          users={users}
+          setUsers={setUsers}
+          user={user}
+          setUser={setUser}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
         <Collapsible />
       </div>
 
