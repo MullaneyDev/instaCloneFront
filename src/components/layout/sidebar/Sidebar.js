@@ -218,8 +218,9 @@ const Sidebar = ({
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
         />
-        <Collapsible />
         <UpdateStatus />
+
+        <Collapsible />
       </div>
 
       <div className="pictureWindow">

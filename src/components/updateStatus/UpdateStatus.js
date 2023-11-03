@@ -16,10 +16,16 @@ const UpdateStatus = () => {
   };
 
   return (
-    <div>
+    <div className="updateStatus">
       <form onSubmit={handleAddPhotoSubmit}>
         <label>Add a photo</label>
-        <input type="text" name="imageurl" className="input-field" placeholder="Image URL"onChange={handleUrl} />
+        <input
+          type="text"
+          name="imageurl"
+          className="input-field"
+          placeholder="Image URL"
+          onChange={handleUrl}
+        />
         <input type="submit" className="sidebarBtn" value="Add" />
       </form>
     </div>

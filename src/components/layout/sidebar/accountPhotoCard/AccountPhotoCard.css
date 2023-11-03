@@ -1,7 +1,6 @@
 .account-card {
   width: 100px;
   height: 100px;
-  border: 1px solid black;
   margin: 5px 0px;
   overflow: hidden;
   object-fit: cover;

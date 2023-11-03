@@ -1,8 +1,8 @@
 .account-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 2px solid red;
   overflow-y: scroll;
+  margin-left: 10px;
 }
 
 h3 {

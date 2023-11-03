@@ -69,6 +69,10 @@
   justify-self: center;
 }
 
+.collapsible {
+  margin-top: 50px;
+}
+
 .collapsible .content {
   padding: 6px;
   background-color: #f1916d;
