@@ -3,7 +3,7 @@ import "./MainDisplayCard.css";
 
 const MainDisplayCard = ({ apiPhoto }) => {
   console.log("HELLO FROM MAIN DISPLAY CARD", apiPhoto);
-  if (!apiPhoto) <h1>NO PHOTO</h1>;
+  if (!apiPhoto) <h1>NO PHOTOS</h1>;
   return (
     <div className="main-display-card">
       <img
@@ -11,6 +11,7 @@ const MainDisplayCard = ({ apiPhoto }) => {
         src={apiPhoto.download_url}
         alt={apiPhoto.author}
       />
+      <p>{apiPhoto.author}</p>
     </div>
   );
 };
