@@ -7,6 +7,7 @@ import { deleteUser } from "../../../utils";
 import { updateUsername, updatePassword } from "../../../utils";
 import { writeCookie } from "../../../common";
 import CardContainer from "../../cards/CardContainer/CardContainer";
+import AccountPhotos from "./accountPhotos/AccountPhotos";
 import Modal from "react-modal";
 import MainDisplay from "../mainDisplay/MainDisplay";
 import UpdateStatus from "../../updateStatus/UpdateStatus";
@@ -27,11 +28,10 @@ const Sidebar = ({
   const [modalUpdateUsername, setModalUpdateUsername] = useState(false);
   const [modalUpdatePassword, setModalUpdatePassword] = useState(false);
 
-  const password = useRef(null)
-  const newPassword = useRef(null)
-  const username = useRef(null)
-  const newUsername = useRef(null)
-
+  const password = useRef(null);
+  const newPassword = useRef(null);
+  const username = useRef(null);
+  const newUsername = useRef(null);
 
   const handleNewUsername = async (e) => {
     e.preventDefault();
@@ -45,13 +45,16 @@ const Sidebar = ({
     await setMessage(response.message);
   };
   const handleNewPassword = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(password?.current?.value);
     console.log(newPassword?.current?.value);
-  
-    const response = await updatePassword(password?.current?.value,newPassword?.current?.value)
-    await setMessage(response.message)
-  }
+
+    const response = await updatePassword(
+      password?.current?.value,
+      newPassword?.current?.value
+    );
+    await setMessage(response.message);
+  };
 
   const handleDelete = async (username) => {
     await deleteUser(username);
@@ -102,9 +105,7 @@ const Sidebar = ({
                 <div className="accountOptions">
                   <form
                     className="updateForm"
-                    onSubmit={(e) =>
-                      handleNewUsername(e)
-                    }
+                    onSubmit={(e) => handleNewUsername(e)}
                   >
                     <label>Update Username</label>
                     <input
@@ -146,9 +147,7 @@ const Sidebar = ({
                 <div className="accountOptions">
                   <form
                     className="updateForm"
-                    onSubmit={(e) =>
-                      handleNewPassword(e)
-                    }
+                    onSubmit={(e) => handleNewPassword(e)}
                   >
                     <label>Update Password</label>
                     <input
@@ -211,13 +210,16 @@ const Sidebar = ({
         <button className="menuBtn">
           <KeyboardDoubleArrowLeftIcon />
         </button>
-        <div className="account">
-          <h3>{user.username}</h3>
-          <h3>Your Photos</h3>
-        </div>
-        <div className="updateStatus">
-          <UpdateStatus />
-        </div>
+        <AccountPhotos
+          users={users}
+          setUsers={setUsers}
+          user={user}
+          setUser={setUser}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
+        <UpdateStatus />
+
         <Collapsible />
       </div>
 

@@ -1,0 +1,12 @@
+.account-card {
+  width: 100px;
+  height: 100px;
+  margin: 5px 0px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.account-card img {
+  height: 100%;
+  overflow: hidden;
+}
