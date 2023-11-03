@@ -35,6 +35,9 @@ const Sidebar = ({
     setter(e.target.value);
   };
 
+  console.log(password);
+  console.log(newPassword);
+
   const handleSubmit = async (e, setter, current, updated) => {
     e.preventDefault();
     const response = await setter(current, updated);
@@ -202,8 +205,8 @@ const Sidebar = ({
         <div className="account">
           <h3>{user.username}</h3>
           <h3>Your Photos</h3>
-        </div>       
-         <div className="updateStatus">
+        </div>
+        <div className="updateStatus">
           <UpdateStatus />
         </div>
         <Collapsible />
