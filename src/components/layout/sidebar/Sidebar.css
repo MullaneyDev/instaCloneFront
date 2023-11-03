@@ -82,7 +82,7 @@
 .ModalStyle {
   display: grid;
   justify-content: center;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   position: absolute;
   top: 50%;
   left: 50%;
