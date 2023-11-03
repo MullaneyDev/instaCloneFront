@@ -1,6 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getUsersPhotos } from "../../../../utils";
+
+import AccountPhotoCard from "../accountPhotoCard/AccountPhotoCard";
+
+import "./AccountPhotos.css";
 
 const AccountPhotos = ({
   users,
@@ -10,27 +14,46 @@ const AccountPhotos = ({
   loggedIn,
   setLoggedIn,
 }) => {
-  console.log("HELLO FROM USEEFFECT", user);
-
+  const [userToDisplay, setUserToDisplay] = useState({});
+  const userRef = useRef(user);
   useEffect(() => {
-    console.log("HELLO FROM USEEFFECT22222222", user);
-    const getUsersimages = async (user) => {
-      const loggedUser = await getUsersPhotos(user);
-      console.log("FROM ACCOUTPHOTOS", loggedUser);
+    userRef.current = user;
+    const getUsersimages = async () => {
+      const currentUser = userRef.current;
 
-      return loggedUser;
+      const loggedUser = await getUsersPhotos(currentUser.username);
+      console.log("HELLO  USER", loggedUser);
+      setUserToDisplay(loggedUser.result);
+      console.log("YO BROOOOO", userToDisplay);
     };
     getUsersimages();
   }, [user]);
-
+  console.log("YO brewwww", userToDisplay.Photos);
   if (!user) {
     return <h1>INBETWWEN LOGGING IN</h1>;
   }
   return (
-    <div className="account">
-      <h3>{user.username}</h3>
-      <h3>Your Photos</h3>
-    </div>
+    <>
+      <div id="keep-together">
+        <h3>{user.username}</h3>
+        <h3>Your Photos</h3>
+      </div>
+      <div className="account-wrapper">
+        {userToDisplay.Photos ? (
+          userToDisplay.Photos.map((photo, index) => (
+            <AccountPhotoCard
+              key={index}
+              users={users}
+              setUsers={setUsers}
+              user={user}
+              photo={photo}
+            />
+          ))
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -14,20 +14,20 @@ function App() {
   const [user, setUser] = useState({});
   const [apiPhotos, setApiPhotos] = useState([]);
 
-  useEffect(() => {
-    async function getPhotos() {
-      const response = await fetch(`https://picsum.photos/v2/list`);
-      const data = await response.json();
-      console.log(data);
-      setApiPhotos(data);
-    }
-    getPhotos();
-    // if (apiPhotos === false) {
-    //   setApiPhotos(false);
-    // } else {
-    //   console.log("apiPhotos");
-    // }
-  }, []);
+  // useEffect(() => {
+  //   async function getPhotos() {
+  //     const response = await fetch(`https://picsum.photos/v2/list`);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setApiPhotos(data);
+  //   }
+  //   getPhotos();
+  //   // if (apiPhotos === false) {
+  //   //   setApiPhotos(false);
+  //   // } else {
+  //   //   console.log("apiPhotos");
+  //   // }
+  // }, []);
 
   useEffect(() => {
     console.log("HELLO FROM COOKIE USE EFFECT");
@@ -45,6 +45,7 @@ function App() {
 
   const loginWithToken = async (token, setUser) => {
     const persistentUser = await authCheck(token);
+    console.log("PERSISTENT USEREY", persistentUser);
     await setUser(persistentUser.user);
     await setLoggedIn(true);
   };

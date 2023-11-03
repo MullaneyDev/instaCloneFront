@@ -180,14 +180,17 @@ export const updateStatus = async (url) => {
 export const getUsersPhotos = async (username) => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`http://localhost:5001/user/${username}`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `http://localhost:5001/user/getUserPhotos/${username}`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
