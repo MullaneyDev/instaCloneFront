@@ -43,7 +43,6 @@ function App() {
 
   const loginWithToken = async (token, setUser) => {
     const persistentUser = await authCheck(token);
-    console.log("PERSISTENT USEREY", persistentUser);
     await setUser(persistentUser.user);
     await setLoggedIn(true);
   };
