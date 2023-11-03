@@ -49,8 +49,19 @@ export const loginUser = async (username, password) => {
       }),
     });
     const data = await response.json();
-    writeCookie("jwt_token", data.user.token, 7);
-    return data;
+    if (
+      data.message !== "Invalid username." &&
+      data.message !== "Unauthorised Login!"
+    ) {
+      writeCookie("jwt_token", data.user.token, 7);
+      return data;
+    }
+    if (data.message === "Invalid username.") {
+      return { message: "Invalid username", data };
+    }
+    if (data.message === "Unauthorised Login!") {
+      return { message: "Invalid password", data };
+    }
   } catch (error) {
     console.log(error);
   }
@@ -118,6 +129,7 @@ export const updatePassword = async (password, newPassword) => {
       }
     );
     const data = await response.json();
+    console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -134,6 +146,27 @@ export const deleteUser = async (username) => {
       },
       body: JSON.stringify({
         username: username,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateStatus = async (url) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`http://localhost:5001/photo`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        url: url,
       }),
     });
     const data = await response.json();

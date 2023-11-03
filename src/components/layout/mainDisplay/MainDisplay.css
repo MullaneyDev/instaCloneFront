@@ -1,0 +1,7 @@
+.image-feed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 90%;
+  overflow-y: scroll;
+}

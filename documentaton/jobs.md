@@ -15,3 +15,14 @@ Matt
 
 github repository - Matt
 clever cloud db - Joe
+
+### Job placement
+
+Front end
+Matt
+Cornelia
+
+Back end
+Joe
+Nathan
+Jake
