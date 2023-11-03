@@ -22,13 +22,10 @@ const AccountPhotos = ({
       const currentUser = userRef.current;
 
       const loggedUser = await getUsersPhotos(currentUser.username);
-      console.log("HELLO  USER", loggedUser);
       setUserToDisplay(loggedUser.result);
-      console.log("YO BROOOOO", userToDisplay);
     };
     getUsersimages();
   }, [user]);
-  console.log("YO brewwww", userToDisplay.Photos);
   if (!user) {
     return <h1>INBETWWEN LOGGING IN</h1>;
   }

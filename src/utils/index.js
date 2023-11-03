@@ -10,9 +10,7 @@ export const authCheck = async (jwt) => {
         Authorization: `Bearer ${jwt}`,
       },
     });
-    console.log("FROM AUTHCHECK", response);
     const data = await response.json();
-    console.log(response, data);
     return data;
   } catch (error) {
     console.log(error);
@@ -131,7 +129,7 @@ export const updatePassword = async (password, newPassword) => {
       }
     );
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
