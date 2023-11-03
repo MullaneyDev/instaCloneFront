@@ -1,0 +1,14 @@
+.account-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid red;
+  overflow-y: scroll;
+}
+
+h3 {
+  height: 50px;
+}
+
+#keep-together {
+  grid-row: 1 / span 0.5;
+}
