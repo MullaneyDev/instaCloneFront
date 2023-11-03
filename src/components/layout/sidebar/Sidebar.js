@@ -1,6 +1,6 @@
 import "./Sidebar.css";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
-import React from "react";
+import React, { useRef } from "react";
 import { useCollapse } from "react-collapsed";
 import { useState } from "react";
 import { deleteUser } from "../../../utils";
@@ -23,23 +23,36 @@ const Sidebar = ({
   setLoggedIn,
   apiPhotos,
 }) => {
-  console.log("SIDEBAR", user);
-  const [username, setUsername] = useState("");
-  const [newUsername, setNewUsername] = useState("");
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
   const [modalUpdateUsername, setModalUpdateUsername] = useState(false);
   const [modalUpdatePassword, setModalUpdatePassword] = useState(false);
 
-  const handleChange = (e, setter) => {
-    setter(e.target.value);
-  };
+  const password = useRef(null);
+  const newPassword = useRef(null);
+  const username = useRef(null);
+  const newUsername = useRef(null);
 
-  const handleSubmit = async (e, setter, current, updated) => {
+  const handleNewUsername = async (e) => {
     e.preventDefault();
-    const response = await setter(current, updated);
+    console.log(username?.current?.value);
+    console.log(newUsername?.current?.value);
+
+    const response = await updateUsername(
+      username?.current?.value,
+      newUsername?.current?.value
+    );
+    await setMessage(response.message);
+  };
+  const handleNewPassword = async (e) => {
+    e.preventDefault();
+    console.log(password?.current?.value);
+    console.log(newPassword?.current?.value);
+
+    const response = await updatePassword(
+      password?.current?.value,
+      newPassword?.current?.value
+    );
     await setMessage(response.message);
   };
 
@@ -92,9 +105,7 @@ const Sidebar = ({
                 <div className="accountOptions">
                   <form
                     className="updateForm"
-                    onSubmit={(e) =>
-                      handleSubmit(e, updateUsername, username, newUsername)
-                    }
+                    onSubmit={(e) => handleNewUsername(e)}
                   >
                     <label>Update Username</label>
                     <input
@@ -102,14 +113,14 @@ const Sidebar = ({
                       required={true}
                       placeholder="Current Username"
                       className="input-field"
-                      onChange={(e) => handleChange(e, setUsername)}
+                      ref={username}
                     />
                     <input
                       type="text"
                       required={true}
                       placeholder="New Username"
                       className="input-field"
-                      onChange={(e) => handleChange(e, setNewUsername)}
+                      ref={newUsername}
                     />
                     <input
                       className="sidebarBtn"
@@ -136,9 +147,7 @@ const Sidebar = ({
                 <div className="accountOptions">
                   <form
                     className="updateForm"
-                    onSubmit={(e) =>
-                      handleSubmit(e, updatePassword, password, newPassword)
-                    }
+                    onSubmit={(e) => handleNewPassword(e)}
                   >
                     <label>Update Password</label>
                     <input
@@ -146,14 +155,14 @@ const Sidebar = ({
                       required={true}
                       placeholder="Current Password"
                       className="input-field"
-                      onChange={(e) => handleChange(e, setPassword)}
+                      ref={password}
                     />
                     <input
                       type="password"
                       required={true}
                       placeholder="New Password"
                       className="input-field"
-                      onChange={(e) => handleChange(e, setNewPassword)}
+                      ref={newPassword}
                     />
                     <input
                       className="sidebarBtn"
