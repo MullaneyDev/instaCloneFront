@@ -32,6 +32,7 @@ const Sidebar = ({
   const username = useRef(null)
   const newUsername = useRef(null)
 
+
   const handleNewUsername = async (e) => {
     e.preventDefault();
     console.log(username?.current?.value);
@@ -213,8 +214,8 @@ const Sidebar = ({
         <div className="account">
           <h3>{user.username}</h3>
           <h3>Your Photos</h3>
-        </div>       
-         <div className="updateStatus">
+        </div>
+        <div className="updateStatus">
           <UpdateStatus />
         </div>
         <Collapsible />
