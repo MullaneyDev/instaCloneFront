@@ -16,7 +16,6 @@ Matt
 github repository - Matt
 clever cloud db - Joe
 
-
 ### Job placement
 
 Front end
